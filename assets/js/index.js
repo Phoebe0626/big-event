@@ -13,6 +13,9 @@ function renderUser() {
       if (res.data.user_pic) {
         $('.layui-nav-img').attr('src', res.data.user_pic);
         $('.img_avatar').show();
+      } else {
+        let str = (res.data.username).slice(0, 1).toUpperCase();
+        $('.text_avatar').html(str).css('display', 'inline-block');
       }
     }
   })
