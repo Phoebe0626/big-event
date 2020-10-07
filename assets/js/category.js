@@ -30,9 +30,11 @@ $('.addbtn').on('click', function () {
       url: '/my/article/addcates',
       data: data,
       success: function (res) {
-        layer.msg(res.message);
-        layer.close(index);
-        renderCategory();
+        if (res.status === 0) {
+          layer.msg(res.message);
+          layer.close(index);
+          renderCategory();
+        }
       }
     })
   })
@@ -72,4 +74,22 @@ $('tbody').on('click', 'button:contains("编辑")', function () {
       }
     });
   })
+});
+
+// ----------------------------------删除类别-----------------------------------------
+$('tbody').on('click', 'button:contains("删除")', function () {
+  let id = $(this).data('id');
+  layer.confirm('确定删除吗', function (index) {
+    $.ajax({
+      url: '/my/article/deletecate/' + id,
+      success: function (res) {
+        if (res.status === 0) {
+          layer.msg(res.message);
+          renderCategory();
+        }
+      }
+    })
+    layer.close(index);
+  });
 })
+
