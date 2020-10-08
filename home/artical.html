@@ -87,7 +87,7 @@
       <td>{{item.pub_date|dateFormat}}</td>
       <td>{{item.state}}</td>
       <td>
-        <button type="button" class="layui-btn layui-btn-xs">编辑</button>
+        <a href="/home/edit.html?id={{item.Id}}" class="layui-btn layui-btn-xs">编辑</a>
         <button type="button" data-id="{{item.Id}}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
       </td>
     </tr>
